@@ -1,7 +1,10 @@
-import { storageService } from '../../../../services/storage-service.js'
+import {
+  storageService
+} from '../../../../services/storage-service.js'
 
 export const emailService = {
-  query
+  query,
+  removeEmail
 }
 
 const emailCount = 10;
@@ -9,13 +12,14 @@ const emailCount = 10;
 const emails = [];
 
 function query() {
-  createEmails();
+  if (!emails.length) createEmails();
   return Promise.resolve(emails)
 }
 
 function createEmail() {
   return {
     id: makeId(),
+    from: 'Puki',
     subject: 'Subject',
     body: 'Body',
     isRead: Math.random() > 0.5 ? true : false,
@@ -27,6 +31,11 @@ function createEmails() {
   for (let i = 0; i < emailCount; i++) {
     emails.push(createEmail())
   }
+}
+
+function removeEmail(emailId) {
+  let emailIdx = emails.findIndex(email => email.id === emailId)
+  emails.splice (emailIdx, 1)
 }
 
 function makeId(length = 5) {

@@ -7,7 +7,7 @@ export const _NavBar = () => {
         <NavLink to='/'>
           <li>Home</li>
         </NavLink>
-        <NavLink to='/mail'>
+        <NavLink to='/email'>
           <li>Mail</li>
         </NavLink>
         <NavLink to='/note'>

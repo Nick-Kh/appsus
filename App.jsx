@@ -5,7 +5,7 @@ import { NavBar } from './cmps/NavBar.jsx'
 import { Home } from './pages/Home.jsx'
 import { Book } from './js/apps/book/Book.jsx'
 import { Note } from './js/apps/note/Note.jsx'
-import { EmailApp } from './js/apps/mail/EmailApp.jsx'
+import { EmailApp } from './js/apps/email/EmailApp.jsx'
 
 export class App extends React.Component {
   render() {
@@ -15,7 +15,7 @@ export class App extends React.Component {
         <main>
           <Switch>
             <Route component={Note} path='/note'></Route>
-            <Route component={EmailApp} path='/mail'></Route>
+            <Route component={EmailApp} path='/email'></Route>
             <Route component={Book} path='/book'></Route>
             <Route component={Home} path='/' />
           </Switch>
