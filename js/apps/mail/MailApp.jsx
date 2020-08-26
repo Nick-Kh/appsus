@@ -3,3 +3,4 @@ export class Mail extends React.Component {
     return <h1>Mail app</h1>
   }
 }
+

@@ -5,7 +5,7 @@ import { NavBar } from './cmps/NavBar.jsx'
 import { Home } from './cmps/Home.jsx'
 import { Book } from './js/apps/book/Book.jsx'
 import { Note } from './js/apps/note/Note.jsx'
-import { Mail } from './js/apps/mail/Mail.jsx'
+import { Mail } from './js/apps/mail/MailApp.jsx'
 
 export class App extends React.Component {
   render() {
