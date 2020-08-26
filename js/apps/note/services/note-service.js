@@ -10,12 +10,15 @@ const gNotes = [
     info: {
       txt: 'Fullstack Me Baby!',
     },
+    style: {
+      backgroundColor: 'green',
+    },
   },
   {
     id: 2,
     type: 'NoteImg',
     info: {
-      url: 'http://some-img/me',
+      url: 'http://coding-academy.org/books-photos/20.jpg',
       title: 'Me playing Mi',
     },
     style: {
@@ -31,6 +34,10 @@ const gNotes = [
         { txt: 'Do that', doneAt: null },
         { txt: 'Do this', doneAt: 187111111 },
       ],
+    },
+    style: {
+      backgroundColor: 'red',
+      color: 'white',
     },
   },
 ]

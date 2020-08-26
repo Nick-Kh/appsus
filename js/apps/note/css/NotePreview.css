@@ -1,8 +1,0 @@
-.note-preview {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 10px;
-  transition: 0.5s;
-}
