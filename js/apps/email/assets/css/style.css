@@ -1,0 +1,56 @@
+.email-app {
+  font-family: 'Roboto', sans-serif;
+}
+
+.email-list {
+  border: 1px solid rgba(100, 121, 143, 0.122);
+  font-size: .875rem;
+  letter-spacing: .2px;
+}
+
+.email {
+  background: rgba(242, 245, 245, 0.8);
+  box-shadow: inset 0 -1px 0 0 rgba(100, 121, 143, 0.122);
+  position: relative;
+}
+
+.email:hover {
+  box-shadow: inset 1px 0 0 #dadce0,
+    inset -1px 0 0 #dadce0,
+    0 1px 2px 0 rgba(60, 64, 67, .3),
+    0 1px 3px 1px rgba(60, 64, 67, .15);
+  z-index: 1;
+}
+
+.email a {
+  text-decoration: none;
+  color: black;
+}
+
+.em-cont {
+  display: inline-block;
+  padding: 10px 50px 10px 0;
+}
+
+.em-cont.email-from {
+  margin-left: 10px;
+}
+
+.unread {
+  /* color: #202124; */
+  background-color: rgba(255, 255, 255, 0.902);
+  /* #5f6368 */
+}
+
+.envelope {
+  margin-right: 50px;
+}
+
+.trash, .envelope {
+  padding: 7px;
+}
+
+.trash:hover, .envelope:hover {
+  border-radius: 100%;
+  background-color: rgba(221, 221, 221, 0.7);
+}

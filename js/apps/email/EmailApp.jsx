@@ -1,4 +1,4 @@
-import { emailService } from '../mail/services/mail-service.js'
+import { emailService } from './services/mail-service.js'
 import { EmailList } from './cmps/EmailList.jsx';
 
 export class EmailApp extends React.Component {
@@ -12,7 +12,7 @@ export class EmailApp extends React.Component {
   }
 
   componentWillUnmount() {
-    this.setState({ emails: [] })
+    this.removeStateEmails()
   }
 
   loadEmails() {
@@ -22,6 +22,16 @@ export class EmailApp extends React.Component {
       })
   }
 
+  removeStateEmails() {
+    this.setState({ emails: [] })
+  }
+
+  removeEmail = (ev, idx) => {
+    emailService.removeEmail(idx)
+    this.removeStateEmails()
+    this.loadEmails()
+  }
+
   render() {
 
     const { emails } = this.state
@@ -29,7 +39,7 @@ export class EmailApp extends React.Component {
     return (
       <section className="email-app">
         <h1>Mail app</h1>
-        <EmailList emails={emails} />
+        <EmailList emails={emails} removeEmail={this.removeEmail}/>
       </section>
     )
   }
