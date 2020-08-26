@@ -1,0 +1,28 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.nav-bar {
+  font-size: 1.5rem;
+  display: flex;
+  padding: 20px 0;
+  background: darkblue;
+  color: white;
+}
+
+.nav-bar ul {
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+}
+
+li {
+  margin: 0 20px;
+  cursor: pointer;
+}
+
+li:hover {
+  background: blue;
+}
