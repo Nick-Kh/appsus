@@ -1,0 +1,8 @@
+.add-note {
+  display: flex;
+  flex-direction: row;
+}
+
+.add-note input {
+  padding: 10px 20px;
+}
