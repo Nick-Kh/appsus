@@ -3,18 +3,21 @@ const { NavLink, withRouter } = ReactRouterDOM
 export const _NavBar = () => {
   return (
     <nav className='nav-bar'>
+      <div className="img">
+        <img src="./img/logo.png" />
+      </div>
       <ul>
         <NavLink to='/'>
           <li>Home</li>
         </NavLink>
         <NavLink to='/email'>
-          <li>Mail</li>
+          <li>Email</li>
         </NavLink>
         <NavLink to='/note'>
-          <li>Note</li>
+          <li>Notes</li>
         </NavLink>
         <NavLink to='/book'>
-          <li>Book</li>
+          <li>Books</li>
         </NavLink>
       </ul>
     </nav>

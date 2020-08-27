@@ -9,24 +9,34 @@
 }
 
 .nav-bar {
-  font-size: 1.5rem;
+  font-size: 2rem;
   display: flex;
-  padding: 20px 0;
-  background: darkblue;
-  color: white;
+  justify-content: space-between;
+  background: white;
+  border-bottom: 1px solid rgba(100, 121, 143, 0.122);
+}
+
+.nav-bar img {
+  width: 80px;
+  margin-left: 50px;
 }
 
 .nav-bar ul {
   display: flex;
-  justify-content: space-around;
   list-style: none;
 }
 
-li {
-  margin: 0 20px;
-  cursor: pointer;
+.nav-bar a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: black;
+  font-family: 'Roboto', sans-serif;
+  margin-right: 50px;
+  cursor: pointer
 }
 
-li:hover {
-  background: blue;
+.nav-bar a:hover {
+  box-shadow: 0 4px 2px -2px gray;
+  color: #444444;
 }
