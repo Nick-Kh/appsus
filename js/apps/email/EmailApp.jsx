@@ -1,5 +1,6 @@
 import { emailService } from './services/mail-service.js'
 import { EmailList } from './cmps/EmailList.jsx';
+import { Aside } from './cmps/Aside.jsx';
 
 export class EmailApp extends React.Component {
 
@@ -26,9 +27,13 @@ export class EmailApp extends React.Component {
     this.setState({ emails: [] })
   }
 
-  removeEmail = (ev, idx) => {
+  readToggle = (idx) => {
+    emailService.readToggle(idx)
+    this.loadEmails()
+  }
+
+  removeEmail = (idx) => {
     emailService.removeEmail(idx)
-    this.removeStateEmails()
     this.loadEmails()
   }
 
@@ -38,8 +43,10 @@ export class EmailApp extends React.Component {
 
     return (
       <section className="email-app">
-        <h1>Mail app</h1>
-        <EmailList emails={emails} removeEmail={this.removeEmail}/>
+        <div className="container flex">
+          <Aside />
+          <EmailList emails={emails} removeEmail={this.removeEmail} readToggle={this.readToggle} />
+        </div>
       </section>
     )
   }

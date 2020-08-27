@@ -1,0 +1,52 @@
+.modal-wrapper {
+  position: fixed;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  z-index: 5;
+}
+
+.modal-content {
+  background: white;
+  width: 450px;
+  min-height: 400px;
+  position: relative;
+  border-radius: 10px;
+  font-family: 'Roboto', sans-serif;
+  animation-name: modalopen;
+  animation-duration: 0.8s;
+  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.17);
+}
+
+.close-modal-btn {
+  color: #fff;
+  border: none;
+  position: absolute;
+  top: 0px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 30px;
+}
+
+.close-modal-btn:focus {
+  outline: none;
+}
+
+.hide {
+  display: none;
+}
+
+@keyframes modalopen {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

@@ -3,9 +3,10 @@
 }
 
 .email-list {
-  border: 1px solid rgba(100, 121, 143, 0.122);
+  border-top: 1px solid rgba(100, 121, 143, 0.122);
   font-size: .875rem;
   letter-spacing: .2px;
+  flex: 1
 }
 
 .email {
@@ -32,13 +33,22 @@
   padding: 10px 50px 10px 0;
 }
 
+.em-cont.checkbox {
+  margin-left: 10px;
+}
+
 .em-cont.email-from {
   margin-left: 10px;
+}
+
+.read {
+  box-shadow: inset 0 -1px 0 0 rgba(100, 121, 143, 0.122);
 }
 
 .unread {
   /* color: #202124; */
   background-color: rgba(255, 255, 255, 0.902);
+  box-shadow: inset 0 -1px 0 0 rgba(100, 121, 143, 0.122);
   /* #5f6368 */
 }
 
@@ -46,11 +56,88 @@
   margin-right: 50px;
 }
 
-.trash, .envelope {
+.trash,
+.envelope {
   padding: 7px;
 }
 
-.trash:hover, .envelope:hover {
+.trash:hover,
+.envelope:hover {
   border-radius: 100%;
   background-color: rgba(221, 221, 221, 0.7);
+}
+
+/* ******************************************* */
+
+.aside {
+  min-width: 200px;
+  border: 1px solid rgba(100, 121, 143, 0.122);
+  height: 100vh;
+}
+
+.compose {
+  justify-content: center;
+  align-items: center;
+  height: 48px;
+  width: 150px;
+  margin: 16px 0 16px 15px;
+  box-shadow: 0 1px 2px 0 rgba(60,64,67,0.302), 0 1px 3px 1px rgba(60,64,67,0.149);
+  border-radius: 24px;
+  cursor: pointer;
+  transition: box-shadow .08s linear,min-width .15s cubic-bezier(0.4,0.0,0.2,1);
+}
+
+.compose:hover {
+  box-shadow: 0 1px 3px 0 rgba(60,64,67,0.302), 0 4px 8px 3px rgba(60,64,67,0.149);
+  background-color: #fafafb;
+}
+
+.compose .plus {
+  margin-right: 10px;
+}
+
+.aside .nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 25px;
+  height: 35px;
+  width: 150px;
+  margin: 16px 0 16px 15px;
+  box-shadow: 0 1px 2px 0 rgba(60,64,67,0.302), 0 1px 3px 1px rgba(60,64,67,0.149);
+  border-radius: 24px;
+  cursor: pointer;
+  transition: box-shadow .08s linear,min-width .15s cubic-bezier(0.4,0.0,0.2,1);
+}
+
+.aside .nav:hover {
+  box-shadow: 0 1px 3px 0 rgba(60,64,67,0.302), 0 4px 8px 3px rgba(60,64,67,0.149);
+  background-color: #fafafb;
+}
+
+/* ******************************************* */
+
+.compose-header p {
+  margin: 0;
+  color: white;
+  text-transform: none;
+}
+
+.compose-header {
+  background: #404040;
+  padding: 10px;
+  color: #fff;
+  border-top-left-radius: 9px;
+  border-top-right-radius: 9px;
+}
+
+.compose-body {
+  padding: 20px 16px;
+  background: #fff;
+}
+
+/* ******************************************* */
+
+.flex {
+  display: flex;
 }

@@ -4,7 +4,8 @@ import {
 
 export const emailService = {
   query,
-  removeEmail
+  removeEmail,
+  readToggle
 }
 
 const emailCount = 10;
@@ -33,9 +34,16 @@ function createEmails() {
   }
 }
 
+function getEmailIdx(emailId) {
+  return emails.findIndex(email => email.id === emailId)
+}
+
+function readToggle(emailId) {
+  emails[getEmailIdx(emailId)].isRead = !emails[getEmailIdx(emailId)].isRead
+}
+
 function removeEmail(emailId) {
-  let emailIdx = emails.findIndex(email => email.id === emailId)
-  emails.splice (emailIdx, 1)
+  emails.splice (getEmailIdx(emailId), 1)
 }
 
 function makeId(length = 5) {

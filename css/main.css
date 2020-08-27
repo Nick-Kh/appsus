@@ -1,5 +1,6 @@
 @import '../js/apps/note/assets/css/note-main.css';
 @import '../js/apps/email/assets/css/style.css';
+@import '../css/modal.css';
 
 * {
   margin: 0;
