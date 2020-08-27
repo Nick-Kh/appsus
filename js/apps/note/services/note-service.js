@@ -1,10 +1,27 @@
+import { makeId } from './utils-service.js'
+
 export const noteService = {
   query,
+  removeNote,
+  addNote,
 }
 
-const gNotes = [
+let DEFAULT_NOTE = {
+  id: 0,
+  type: 'NoteText',
+  isPinned: true,
+  info: {
+    txt: 'Fullstack Me Baby!',
+  },
+  style: {
+    backgroundColor: 'green',
+    height: '100px',
+  },
+}
+
+let gNotes = [
   {
-    id: 1,
+    id: makeId(),
     type: 'NoteText',
     isPinned: true,
     info: {
@@ -12,10 +29,11 @@ const gNotes = [
     },
     style: {
       backgroundColor: 'green',
+      height: '100px',
     },
   },
   {
-    id: 2,
+    id: makeId(),
     type: 'NoteImg',
     info: {
       url: 'http://coding-academy.org/books-photos/20.jpg',
@@ -23,10 +41,11 @@ const gNotes = [
     },
     style: {
       backgroundColor: '#00d',
+      height: '400px',
     },
   },
   {
-    id: 3,
+    id: makeId(),
     type: 'NoteTodos',
     info: {
       label: 'How was it:',
@@ -38,10 +57,51 @@ const gNotes = [
     style: {
       backgroundColor: 'red',
       color: 'white',
+      height: '200px',
+    },
+  },
+  {
+    id: makeId(),
+    type: 'NoteText',
+    info: {
+      label: 'How was it:',
+      txt: 'Finish the project',
+      todos: [
+        { txt: 'Do that', doneAt: null },
+        { txt: 'Do this', doneAt: 187111111 },
+      ],
+    },
+    style: {
+      backgroundColor: 'darkorange',
+      color: 'white',
+      height: '250px',
+    },
+  },
+  {
+    id: makeId(),
+    type: 'NoteImg',
+    info: {
+      label: 'How was it:',
+      todos: [
+        { txt: 'Do that', doneAt: null },
+        { txt: 'Do this', doneAt: 187111111 },
+      ],
+    },
+    style: {
+      backgroundColor: 'purple',
+      color: 'white',
     },
   },
 ]
 
 function query() {
   return Promise.resolve(gNotes)
+}
+
+function addNote(note) {
+  gNotes.push(note)
+}
+
+function removeNote(id) {
+  gNotes = gNotes.filter((note) => note.id !== id)
 }

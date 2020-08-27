@@ -1,0 +1,24 @@
+.edit-panel {
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  justify-self: start;
+  flex-direction: row;
+  position: absolute;
+  top: 5px;
+}
+
+.edit-panel i {
+  color: white;
+  margin: 0 5px;
+}
+
+.edit-panel i:hover {
+  color: orangered;
+  cursor: pointer;
+}
+
+.edit-actions {
+  display: flex;
+  justify-content: space-around;
+}

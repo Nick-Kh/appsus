@@ -1,8 +1,46 @@
 .add-note {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto;
 }
 
+.input-form {
+  width: 50%;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  background: lightgray;
+}
+
+.input-form i {
+  margin: 0 10px;
+  transition: 0.3s;
+}
+
+.input-form i:hover {
+  color: orangered;
+}
+
+/* .input-form i:active {
+  padding: 5px;
+  border: 1px solid black;
+  border-radius: 50%;
+} */
+
 .add-note input {
-  padding: 10px 20px;
+  /* padding: 10px; */
+  height: 40px;
+  padding-right: 30%;
+  padding-left: 2%;
+  width: 70%;
+  word-break: break-all;
+  border: none;
+  background: lightgray;
+}
+
+.add-note i:hover {
+  cursor: pointer;
 }

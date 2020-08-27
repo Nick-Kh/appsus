@@ -3,16 +3,16 @@ import { NoteText } from './NoteTypes/NoteText.jsx'
 import { NoteVid } from './NoteTypes/NoteVid.jsx'
 import { NoteTodos } from './NoteTypes/NoteTodos.jsx'
 
-export const NotePreview = ({ note }) => {
+export const NotePreview = ({ note, onNoteDelete }) => {
   switch (note.type) {
     case 'NoteImg':
-      return <NoteImg note={note} />
+      return <NoteImg note={note} onNoteDelete={onNoteDelete} />
     case 'NoteTodos':
-      return <NoteTodos note={note} />
+      return <NoteTodos note={note} onNoteDelete={onNoteDelete} />
     case 'NoteVid':
-      return <NoteVid note={note} />
+      return <NoteVid note={note} onNoteDelete={onNoteDelete} />
     case 'NoteText':
     default:
-      return <NoteText note={note} />
+      return <NoteText note={note} onNoteDelete={onNoteDelete} />
   }
 }
