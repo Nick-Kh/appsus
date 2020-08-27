@@ -78,7 +78,7 @@ let gNotes = [
     id: makeId(),
     type: 'NoteImg',
     info: {
-      label: 'How was it:',
+      url: 'http://coding-academy.org/books-photos/2.jpg',
       todos: [
         { txt: 'Do that', doneAt: null },
         { txt: 'Do this', doneAt: 187111111 },

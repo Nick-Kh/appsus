@@ -66,7 +66,7 @@ export class AddNote extends React.Component {
           <ImgForm
             onInputURL={this.onInputURL}
             onImageUpload={this.onImageUpload}
-            imgURL={this.state.url}
+            imgURL={this.state.note.info.url}
             onTitleChange={this.onTitleChange}
           />
         )
