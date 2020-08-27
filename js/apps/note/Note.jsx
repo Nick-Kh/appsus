@@ -36,7 +36,6 @@ export class Note extends React.Component {
     console.log(this.state.notes)
     return (
       <section className='note-app'>
-        <h1>Note app</h1>
         <AddNote onAddNote={this.onAddNote} />
         {this.state.notes ? (
           <NoteList notes={this.state.notes} onNoteDelete={this.onDeleteNote} />

@@ -25,6 +25,7 @@ let gNotes = [
     type: 'NoteText',
     isPinned: true,
     info: {
+      title: 'FULLSTACK',
       txt: 'Fullstack Me Baby!',
     },
     style: {
@@ -64,12 +65,8 @@ let gNotes = [
     id: makeId(),
     type: 'NoteText',
     info: {
-      label: 'How was it:',
+      title: 'How was it:',
       txt: 'Finish the project',
-      todos: [
-        { txt: 'Do that', doneAt: null },
-        { txt: 'Do this', doneAt: 187111111 },
-      ],
     },
     style: {
       backgroundColor: 'darkorange',
@@ -99,7 +96,10 @@ function query() {
 }
 
 function addNote(note) {
-  gNotes.push(note)
+  let newNote = { ...note, id: makeId() }
+  console.log('adding new note')
+  console.log(note)
+  gNotes.push(newNote)
 }
 
 function removeNote(id) {

@@ -1,9 +1,17 @@
-export const TextForm = ({ onTextChange }) => {
+export const TextForm = ({ onTextChange, onTitleChange }) => {
   return (
-    <input
-      type='text'
-      placeholder="What's on your mind..."
-      onChange={(ev) => onTextChange(ev.target.value)}
-    />
+    <div className='text-form'>
+      <input
+        type='text'
+        placeholder='Add title...'
+        onChange={(ev) => onTitleChange(ev.target.value)}
+      />
+      <input
+        type='text'
+        placeholder='Add note...'
+        onChange={(ev) => onTextChange(ev.target.value)}
+        required
+      />
+    </div>
   )
 }
