@@ -1,58 +1,50 @@
 import { TextForm } from './NoteForms/TextForm.jsx'
 import { ImgForm } from './NoteForms/ImgForm.jsx'
-import { makeId } from '../services/utils-service.js'
 
 export class AddNote extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      url: null,
-      note: {
-        type: 'NoteText',
-        info: {},
-      },
-    }
-    this.onTextChange = this.onTextChange.bind(this)
-    this.onInputURL = this.onInputURL.bind(this)
-    this.onImageUpload = this.onImageUpload.bind(this)
-    this.onTitleChange = this.onTitleChange.bind(this)
+  state = {
+    url: null,
+    note: {
+      type: 'NoteText',
+      info: {},
+    },
   }
 
   componentDidMount() {
     this.setState({ formType: 'text' })
   }
 
-  inputSelect(formType) {
+  inputSelect = (formType) => {
     let note = { ...this.state.note }
     note.type = 'Note' + formType
     this.setState({ note })
   }
 
-  onInputURL(url) {
+  onInputURL = (url) => {
     this.setState({ url })
   }
 
-  onImageUpload(ev) {
+  onImageUpload = (ev) => {
     ev.preventDefault()
     let note = { ...this.state.note }
     note.info.url = this.state.url
     this.setState({ note })
   }
 
-  onTitleChange(title) {
+  onTitleChange = (title) => {
     console.log(title)
     let note = { ...this.state.note }
     note.info.title = title
     this.setState({ note })
   }
 
-  onTextChange(txt) {
+  onTextChange = (txt) => {
     let note = { ...this.state.note }
     note.info.txt = txt
     this.setState({ note })
   }
 
-  getFormCmp(selected) {
+  getFormCmp = (selected) => {
     switch (selected) {
       case 'NoteText':
         return (
