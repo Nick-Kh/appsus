@@ -19,7 +19,7 @@ export class App extends React.Component {
             <Route component={Note} path='/note'></Route>
             <Route component={EmailApp} path='/email'></Route>
             <Route component={Book} path='/book'></Route>
-            <Route component={Home} path='/' />
+            <Route component={Home} path='/' exact />
           </Switch>
         </main>
         <Modal>

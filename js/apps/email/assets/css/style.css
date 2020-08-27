@@ -4,6 +4,7 @@
 
 .email-list {
   border-top: 1px solid rgba(100, 121, 143, 0.122);
+  border-left: 1px solid rgba(100, 121, 143, 0.122);
   font-size: .875rem;
   letter-spacing: .2px;
   flex: 1
@@ -30,7 +31,7 @@
 
 .em-cont {
   display: inline-block;
-  padding: 10px 50px 10px 0;
+  padding: 10px 10px 10px 0;
 }
 
 .em-cont.checkbox {
@@ -39,6 +40,16 @@
 
 .em-cont.email-from {
   margin-left: 10px;
+  width: 170px;
+}
+
+.em-cont.email-subject {
+  width: 270px;
+}
+
+.em-cont.email-body {
+  width: 720px;
+  /* background-color: red; */
 }
 
 .read {
@@ -69,10 +80,18 @@
 
 /* ******************************************* */
 
+.email-details {
+  /* min-height: 100%;
+  width: 100%;
+  margin: 0 auto;
+  background-color: #ddd;
+  position: absolute; top: 0; left: 0; */
+}
+
+/* ******************************************* */
+
 .aside {
   min-width: 200px;
-  border: 1px solid rgba(100, 121, 143, 0.122);
-  height: 100vh;
 }
 
 .compose {
@@ -81,14 +100,14 @@
   height: 48px;
   width: 150px;
   margin: 16px 0 16px 15px;
-  box-shadow: 0 1px 2px 0 rgba(60,64,67,0.302), 0 1px 3px 1px rgba(60,64,67,0.149);
+  box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.302), 0 1px 3px 1px rgba(60, 64, 67, 0.149);
   border-radius: 24px;
   cursor: pointer;
-  transition: box-shadow .08s linear,min-width .15s cubic-bezier(0.4,0.0,0.2,1);
+  transition: box-shadow .08s linear, min-width .15s cubic-bezier(0.4, 0.0, 0.2, 1);
 }
 
 .compose:hover {
-  box-shadow: 0 1px 3px 0 rgba(60,64,67,0.302), 0 4px 8px 3px rgba(60,64,67,0.149);
+  box-shadow: 0 1px 3px 0 rgba(60, 64, 67, 0.302), 0 4px 8px 3px rgba(60, 64, 67, 0.149);
   background-color: #fafafb;
 }
 
@@ -104,14 +123,14 @@
   height: 35px;
   width: 150px;
   margin: 16px 0 16px 15px;
-  box-shadow: 0 1px 2px 0 rgba(60,64,67,0.302), 0 1px 3px 1px rgba(60,64,67,0.149);
+  box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.302), 0 1px 3px 1px rgba(60, 64, 67, 0.149);
   border-radius: 24px;
   cursor: pointer;
-  transition: box-shadow .08s linear,min-width .15s cubic-bezier(0.4,0.0,0.2,1);
+  transition: box-shadow .08s linear, min-width .15s cubic-bezier(0.4, 0.0, 0.2, 1);
 }
 
 .aside .nav:hover {
-  box-shadow: 0 1px 3px 0 rgba(60,64,67,0.302), 0 4px 8px 3px rgba(60,64,67,0.149);
+  box-shadow: 0 1px 3px 0 rgba(60, 64, 67, 0.302), 0 4px 8px 3px rgba(60, 64, 67, 0.149);
   background-color: #fafafb;
 }
 
@@ -132,12 +151,57 @@
 }
 
 .compose-body {
-  padding: 20px 16px;
+  padding: 10px 16px;
   background: #fff;
+}
+
+.compose-body input {
+  display: block;
+  width: 100%;
+  padding: 7px 0;
+  border: none;
+  box-shadow: inset 0 -1px 0 0 rgba(100, 121, 143, 0.122);
+  line-height: 20px;
+  min-height: auto;
+}
+
+.compose-body input:focus {
+  outline: none;
+}
+
+.compose-body textarea {
+  resize: none;
+  padding: 7px 0;
+  border: none;
+}
+
+.compose-body textarea:focus {
+  outline: none;
+}
+
+.compose-body #compose-text {
+  width: 100%;
+  height: 300px;
+}
+
+.compose-body .email-send-btn {
+  min-width: 100px;
+  font-size: 15px;
+  border: none;
+  background: #404040;
+  padding: 10px;
+  margin-top: 20px;
+  color: #fff;
+  border-radius: 10px;
+  cursor: pointer;
 }
 
 /* ******************************************* */
 
 .flex {
   display: flex;
+}
+
+.bold {
+  font-weight: bold;
 }

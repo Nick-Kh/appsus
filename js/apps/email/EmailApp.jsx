@@ -1,6 +1,10 @@
-import { emailService } from './services/mail-service.js'
+import { emailService } from './services/email-service.js'
 import { EmailList } from './cmps/EmailList.jsx';
+import { EmailDetails } from './EmailDetails.jsx';
 import { Aside } from './cmps/Aside.jsx';
+
+const Router = ReactRouterDOM.HashRouter
+const { NavLink, Route, Switch } = ReactRouterDOM
 
 export class EmailApp extends React.Component {
 
@@ -12,19 +16,11 @@ export class EmailApp extends React.Component {
     this.loadEmails()
   }
 
-  componentWillUnmount() {
-    this.removeStateEmails()
-  }
-
   loadEmails() {
     emailService.query()
       .then(emails => {
         this.setState({ emails })
       })
-  }
-
-  removeStateEmails() {
-    this.setState({ emails: [] })
   }
 
   readToggle = (idx) => {
@@ -45,9 +41,16 @@ export class EmailApp extends React.Component {
       <section className="email-app">
         <div className="container flex">
           <Aside />
-          <EmailList emails={emails} removeEmail={this.removeEmail} readToggle={this.readToggle} />
+          <Switch>
+            {/* <EmailList emails={emails} removeEmail={this.removeEmail} readToggle={this.readToggle} />
+            <EmailDetails /> */}
+            <Route component={EmailDetails} path="/email/:emailId" />
+            <Route path="/email" component={() => <EmailList emails={emails} removeEmail={this.removeEmail} readToggle={this.readToggle} />} />
+          </Switch>
         </div>
       </section>
     )
   }
 }
+
+{/* <Route path='/dashboard' component={() => <EmailList emails={emails} removeEmail={this.removeEmail} readToggle={this.readToggle} />} /> */ }
