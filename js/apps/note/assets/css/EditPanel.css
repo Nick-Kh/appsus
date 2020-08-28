@@ -5,20 +5,25 @@
   justify-self: start;
   flex-direction: row;
   position: absolute;
+  transition: 0.5s;
   top: 5px;
 }
 
 .edit-panel i {
   color: white;
-  margin: 0 5px;
+  margin: 0 7px;
 }
 
 .edit-panel i:hover {
-  color: orangered;
+  color: darkred;
   cursor: pointer;
 }
 
 .edit-actions {
   display: flex;
   justify-content: space-around;
+}
+
+.pinned .fa-thumbtack {
+  color: black;
 }

@@ -22,6 +22,7 @@
   transition: 0.3s;
 }
 
-/* .upload-img img:hover {
-
-} */
+.img-form .note-btn {
+  padding: 5px 11px;
+  margin: 5px;
+}

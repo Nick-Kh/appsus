@@ -1,6 +1,14 @@
 import { NotePreview } from './NotePreview.jsx'
 
-export const NoteList = ({ notes, onNoteDelete, onNoteHover, isOnHover }) => {
+export const NoteList = ({
+  notes,
+  onNoteDelete,
+  onNoteHover,
+  onNoteUnhover,
+  onHover,
+  onNotePin,
+  onEditNote,
+}) => {
   return (
     <section className='note-list'>
       {notes.map((note) => (
@@ -9,7 +17,10 @@ export const NoteList = ({ notes, onNoteDelete, onNoteHover, isOnHover }) => {
           note={note}
           onNoteDelete={onNoteDelete}
           onNoteHover={onNoteHover}
-          isOnHover={isOnHover}
+          onNoteUnhover={onNoteUnhover}
+          onHover={onHover}
+          onNotePin={onNotePin}
+          onEditNote={onEditNote}
         />
       ))}
     </section>

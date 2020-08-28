@@ -4,6 +4,9 @@ export const noteService = {
   query,
   removeNote,
   addNote,
+  notePin,
+  editNote,
+  getNoteById,
 }
 
 let DEFAULT_NOTE = {
@@ -15,7 +18,6 @@ let DEFAULT_NOTE = {
   },
   style: {
     backgroundColor: 'green',
-    height: '100px',
   },
 }
 
@@ -30,24 +32,24 @@ let gNotes = [
     },
     style: {
       backgroundColor: 'green',
-      height: '100px',
     },
   },
   {
     id: makeId(),
     type: 'NoteImg',
+    isPinned: false,
     info: {
       url: 'http://coding-academy.org/books-photos/20.jpg',
       title: 'Me playing Mi',
     },
     style: {
       backgroundColor: '#00d',
-      height: '400px',
     },
   },
   {
     id: makeId(),
     type: 'NoteTodos',
+    isPinned: false,
     info: {
       label: 'How was it:',
       todos: [
@@ -58,12 +60,12 @@ let gNotes = [
     style: {
       backgroundColor: 'red',
       color: 'white',
-      height: '200px',
     },
   },
   {
     id: makeId(),
     type: 'NoteText',
+    isPinned: true,
     info: {
       title: 'How was it:',
       txt: 'Finish the project',
@@ -71,12 +73,12 @@ let gNotes = [
     style: {
       backgroundColor: 'darkorange',
       color: 'white',
-      height: '250px',
     },
   },
   {
     id: makeId(),
     type: 'NoteImg',
+    isPinned: false,
     info: {
       url: 'http://coding-academy.org/books-photos/2.jpg',
       todos: [
@@ -96,12 +98,26 @@ function query() {
 }
 
 function addNote(note) {
-  let newNote = { ...note, id: makeId() }
-  console.log('adding new note')
-  console.log(note)
+  let newNote = { ...note, id: makeId(), isPinned: false }
   gNotes.push(newNote)
 }
 
 function removeNote(id) {
   gNotes = gNotes.filter((note) => note.id !== id)
+}
+
+function notePin(id) {
+  gNotes.forEach((note) => {
+    if (note.id === id) {
+      note.isPinned = !note.isPinned
+    }
+  })
+}
+
+function getNoteById(id) {
+  return gNotes.find((note) => note.id === id)
+}
+
+function editNote(note) {
+  console.log('in edit note')
 }

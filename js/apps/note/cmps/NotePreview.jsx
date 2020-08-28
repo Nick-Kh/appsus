@@ -3,7 +3,15 @@ import { NoteText } from './NoteTypes/NoteText.jsx'
 import { NoteVid } from './NoteTypes/NoteVid.jsx'
 import { NoteTodos } from './NoteTypes/NoteTodos.jsx'
 
-export const NotePreview = ({ note, onNoteDelete, onNoteHover, isOnHover }) => {
+export const NotePreview = ({
+  note,
+  onNoteDelete,
+  onNoteHover,
+  onNoteUnhover,
+  onHover,
+  onNotePin,
+  onEditNote,
+}) => {
   switch (note.type) {
     case 'NoteImg':
       return (
@@ -11,13 +19,36 @@ export const NotePreview = ({ note, onNoteDelete, onNoteHover, isOnHover }) => {
           note={note}
           onNoteDelete={onNoteDelete}
           onNoteHover={onNoteHover}
-          isOnHover={isOnHover}
+          onHover={onHover}
+          onNoteUnhover={onNoteUnhover}
+          onNotePin={onNotePin}
+          onEditNote={onEditNote}
         />
       )
     case 'NoteTodos':
-      return <NoteTodos note={note} onNoteDelete={onNoteDelete} />
+      return (
+        <NoteTodos
+          note={note}
+          onNoteDelete={onNoteDelete}
+          onNoteHover={onNoteHover}
+          onNoteUnhover={onNoteUnhover}
+          onHover={onHover}
+          onNotePin={onNotePin}
+          onEditNote={onEditNote}
+        />
+      )
     case 'NoteVid':
-      return <NoteVid note={note} onNoteDelete={onNoteDelete} />
+      return (
+        <NoteVid
+          note={note}
+          onNoteDelete={onNoteDelete}
+          onNoteHover={onNoteHover}
+          onNoteUnhover={onNoteUnhover}
+          onHover={onHover}
+          onNotePin={onNotePin}
+          onEditNote={onEditNote}
+        />
+      )
     case 'NoteText':
     default:
       return (
@@ -25,6 +56,10 @@ export const NotePreview = ({ note, onNoteDelete, onNoteHover, isOnHover }) => {
           note={note}
           onNoteDelete={onNoteDelete}
           onNoteHover={onNoteHover}
+          onNoteUnhover={onNoteUnhover}
+          onHover={onHover}
+          onNotePin={onNotePin}
+          onEditNote={onEditNote}
         />
       )
   }
