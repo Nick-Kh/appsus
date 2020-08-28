@@ -17,7 +17,9 @@ export const ImgForm = ({
           required
           onChange={(ev) => onInputURL(ev.target.value)}
         />
-        <button type='submit'>Upload Image</button>
+        <button className='note-btn' type='submit'>
+          Upload Image
+        </button>
       </form>
       {imgURL ? (
         <div className='upload-img'>

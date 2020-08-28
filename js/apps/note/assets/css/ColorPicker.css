@@ -1,0 +1,15 @@
+.color-picker {
+  background: black;
+  width: 100px;
+  height: 100px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  border-radius: 5px;
+  position: absolute;
+}
+
+.color-item {
+  border-radius: 50%;
+  margin: 2px;
+  border: 1px white solid;
+}

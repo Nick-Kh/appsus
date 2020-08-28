@@ -70,24 +70,25 @@ export class AddNote extends React.Component {
       <section className='add-note'>
         <div className='input-form'>
           {this.getFormCmp(this.state.note.type)}
-          <button onClick={() => this.props.onAddNote(this.state.note)}>
-            <i className='fas fa-plus-circle'></i>
-            Add Note
-          </button>
         </div>
+        <button
+          className='note-btn'
+          onClick={() => this.props.onAddNote(this.state.note)}>
+          Add Note
+        </button>
         <div className='input-select'>
-          <i
-            className='fas fa-font fa-2x'
-            onClick={() => this.inputSelect('Text')}></i>
-          <i
-            className='far fa-image fa-2x'
-            onClick={() => this.inputSelect('Img')}></i>
-          <i
-            className='fas fa-list fa-2x'
-            onClick={() => this.inputSelect('Todos')}></i>
-          <i
-            className='fas fa-video fa-2x'
-            onClick={() => this.inputSelect('Vid')}></i>
+          <div className='input-item' onClick={() => this.inputSelect('Text')}>
+            <i className='fas fa-font fa-2x'></i>
+          </div>
+          <div className='input-item' onClick={() => this.inputSelect('Img')}>
+            <i className='far fa-image fa-2x'></i>
+          </div>
+          <div className='input-item' onClick={() => this.inputSelect('Todos')}>
+            <i className='fas fa-list fa-2x'></i>
+          </div>
+          <div className='input-item' onClick={() => this.inputSelect('Vid')}>
+            <i className='fas fa-video fa-2x'></i>
+          </div>
         </div>
       </section>
     )
