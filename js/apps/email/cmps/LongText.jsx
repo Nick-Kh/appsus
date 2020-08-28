@@ -4,7 +4,7 @@ export function LongTxt({ text }) {
 
   return (
     <div className={"em-cont email-body"}>
-      {text.lengt > 100 ? text : shortText + '...'}
+      {text.length > 100 ? shortText + '...' : text}
     </div>
   )
 }

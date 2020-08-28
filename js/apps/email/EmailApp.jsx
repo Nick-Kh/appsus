@@ -1,10 +1,10 @@
 import { emailService } from './services/email-service.js'
+import { eventBus } from '../../../services/event-bus-service.js'
 import { EmailList } from './cmps/EmailList.jsx';
 import { EmailDetails } from './EmailDetails.jsx';
 import { Aside } from './cmps/Aside.jsx';
 
-const Router = ReactRouterDOM.HashRouter
-const { NavLink, Route, Switch } = ReactRouterDOM
+const { Route, Switch } = ReactRouterDOM
 
 export class EmailApp extends React.Component {
 
@@ -14,6 +14,9 @@ export class EmailApp extends React.Component {
 
   componentDidMount() {
     this.loadEmails()
+    eventBus.on('loadEmails', () => {
+      this.loadEmails()
+    })
   }
 
   loadEmails() {
@@ -52,5 +55,3 @@ export class EmailApp extends React.Component {
     )
   }
 }
-
-{/* <Route path='/dashboard' component={() => <EmailList emails={emails} removeEmail={this.removeEmail} readToggle={this.readToggle} />} /> */ }
