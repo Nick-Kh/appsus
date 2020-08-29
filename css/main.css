@@ -1,6 +1,7 @@
 @import '../js/apps/note/assets/css/note-main.css';
 @import '../js/apps/email/assets/css/style.css';
 @import '../css/modal.css';
+@import '../js/apps/email/assets/css/status-bar.css';
 
 * {
   margin: 0;
@@ -9,7 +10,7 @@
 }
 
 .nav-bar {
-  font-size: 2rem;
+  font-size: 1.1rem;
   display: flex;
   justify-content: space-between;
   background: #f3f3f3;

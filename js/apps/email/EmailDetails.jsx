@@ -20,6 +20,16 @@ export class EmailDetails extends React.Component {
     this.props.history.goBack()
   }
 
+  unReadEmail = () => {
+    emailService.unReadEmail(this.props.match.params.emailId)
+    this.goBack()
+  }
+
+  removeEmail = () => {
+    emailService.removeEmail(this.props.match.params.emailId)
+    this.goBack()
+  }
+
   render() {
 
     const { email } = this.state;
@@ -27,9 +37,12 @@ export class EmailDetails extends React.Component {
 
     return (
       <section className="email-details">
-        <i className="fas fa-arrow-left" onClick={this.goBack}></i>
+        <i className="details-nav fas fa-arrow-left" onClick={this.goBack}></i>
+        <i className="details-nav far fa-envelope" onClick={this.unReadEmail}></i>
+        <i className="details-nav far fa-trash-alt" onClick={this.removeEmail}></i>
         <h2 className="details-el subject">{email.subject}</h2>
         <h1 className="details-el from">{email.from}</h1>
+        <p className="details-el email-adress">({email.email})</p>
         <p className="details-el received">{email.receivedAt}</p>
         <div className="details-el body">{email.body}</div>
         <button className="reply-btn">Reply</button>
@@ -37,19 +50,3 @@ export class EmailDetails extends React.Component {
     )
   }
 }
-
-// function _NavBar(props) {
-//   console.log(props.history);
-//   function goBack() {
-//     props.history.goBack()
-//   }
-//   return (
-//     <nav>
-//       <NavLink exact activeClassName='active-nav' to="/">Home</NavLink>|
-//       <NavLink to="/pet">Pets</NavLink>|
-//       <NavLink to="/about">About</NavLink>|
-//       <button onClick={goBack}>Back</button>
-//     </nav>
-//   )
-// }
-// export const NavBar = withRouter(_NavBar)
