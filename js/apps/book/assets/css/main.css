@@ -1,0 +1,287 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    /* background: url(/assets/img/books.jpg); */
+    font-family: 'Lobster', cursive;
+}
+
+h1,
+h2,
+h3 {
+    text-transform: capitalize;
+}
+
+p {
+    font-size: 20px;
+}
+
+.book-preview h3 {
+    text-transform: capitalize;
+    margin-bottom: 20px;
+}
+
+.book-preview img {
+    width: 100px;
+    margin: 0;
+}
+
+.book {
+    background-color: #e0ece4;
+    height: 300px;
+    padding: 10px;
+    margin: 5px;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 5px;
+    opacity: 0.95;
+}
+
+.book-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.book-details {
+    text-align: center;
+    width: 500px;
+    border: 1px solid black;
+    margin: 0 auto;
+    position: relative;
+    background-color: #e0ece4;
+    border-radius: 5px;
+    opacity: 0.95;
+}
+
+.book-details img {
+    width: 200px;
+}
+
+.book-details .sale-img {
+    position: absolute;
+    width: 100px;
+    top: 0px;
+    right: 10px;
+}
+
+ul {
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+.none {
+    display: none;
+}
+
+.back-btn {
+    background-color: #fff;
+    border: none;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Lobster', cursive;
+}
+
+.back-btn:hover {
+    background-color: rgb(245, 245, 245);
+}
+
+.lang {
+    text-transform: capitalize;
+}
+
+.red {
+    color: red;
+}
+
+.green {
+    color: green;
+}
+
+.see-btn {
+    background-color: inherit;
+    border: none;
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+}
+
+.see-btn:focus {
+    outline: none;
+}
+
+.text {
+    display: inline;
+}
+
+.filter {
+    display: inline-block;
+}
+
+.book-filter {
+    background-color: #fff;
+    opacity: 0.9;
+    text-align: center;
+    border-radius: 5px;
+    margin-bottom: 7px;
+}
+
+.book-filter input {
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 10px;
+    font-size: 15px;
+}
+
+.home {
+    font-family: 'Lobster', cursive;
+    color: white;
+    text-align: center;
+    font-size: 70px;
+}
+
+.home h2,
+.home h3 {
+    margin: 40px;
+}
+
+.go-btn {
+    border: none;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: black;
+    opacity: 0.8;
+    color: white;
+    cursor: pointer;
+    font-size: 30px;
+    font-family: 'Lobster', cursive;
+    margin-bottom: 50px;
+}
+
+.go-btn:hover {
+    background-color: rgb(30, 30, 30);
+}
+
+.about {
+    opacity: 0.9;
+    max-width: 70%;
+    background-color: #fff;
+    margin: 20px auto;
+    text-align: center;
+    border-radius: 5px;
+    padding: 20px;
+    font-size: 20px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.main-nav {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    background-color: #fff;
+    opacity: 0.9;
+    text-align: center;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    padding-left: 20px;
+    font-size: 20px;
+}
+
+.main-nav img {
+    width: 100px;
+}
+
+.links {
+    margin-top: 30px;
+}
+
+.main-nav a {
+    font-size: 30px;
+    margin-right: 50px;
+}
+
+.add-book-btn {
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 5px;
+    padding: 10px;
+    background-color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Lobster', cursive;
+    font-size: 20px;
+}
+
+.modal-wrapper {
+    position: fixed;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: 5;
+}
+
+.hide {
+    display: none;
+}
+
+.modal-content {
+    background: white;
+    max-width: 70%;
+    min-width: 50%;
+    min-height: 400px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+    position: relative;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.close-modal-btn {
+    border: none;
+    background-color: #fff;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+}
+
+.modal-content input {
+    width: 300px;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 10px;
+    font-size: 15px;
+}
+
+.add-btn {
+    border-radius: 100%;
+    border: 1px solid black;
+    background-color: #fff;
+    font-size: 20px;
+    padding: 5px;
+    line-height: 11px;
+    cursor: pointer;
+}
+
+.book-add li {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 50px;
+}

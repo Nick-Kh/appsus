@@ -26,7 +26,7 @@ export const _NavBar = () => {
         <NavLink to='/note' onClick={toggleMenu}>
           <li>Notes</li>
         </NavLink>
-        <NavLink to='/book' onClick={toggleMenu}>
+        <NavLink to='/books' onClick={toggleMenu}>
           <li>Books</li>
         </NavLink>
       </ul>
