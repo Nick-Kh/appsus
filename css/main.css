@@ -12,7 +12,7 @@
   font-size: 2rem;
   display: flex;
   justify-content: space-between;
-  background: white;
+  background: #f3f3f3;
   border-bottom: 1px solid rgba(100, 121, 143, 0.122);
 }
 
@@ -33,7 +33,7 @@
   color: black;
   font-family: 'Roboto', sans-serif;
   margin-right: 50px;
-  cursor: pointer
+  cursor: pointer;
 }
 
 .nav-bar a:hover {

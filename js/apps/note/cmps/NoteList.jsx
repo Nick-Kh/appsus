@@ -8,6 +8,9 @@ export const NoteList = ({
   onHover,
   onNotePin,
   onEditNote,
+  editNote,
+  onAddNote,
+  onColorPick,
 }) => {
   return (
     <section className='note-list'>
@@ -21,6 +24,9 @@ export const NoteList = ({
           onHover={onHover}
           onNotePin={onNotePin}
           onEditNote={onEditNote}
+          editNote={editNote}
+          onAddNote={onAddNote}
+          onColorPick={onColorPick}
         />
       ))}
     </section>

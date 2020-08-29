@@ -5,20 +5,9 @@ export const noteService = {
   removeNote,
   addNote,
   notePin,
-  editNote,
   getNoteById,
-}
-
-let DEFAULT_NOTE = {
-  id: 0,
-  type: 'NoteText',
-  isPinned: true,
-  info: {
-    txt: 'Fullstack Me Baby!',
-  },
-  style: {
-    backgroundColor: 'green',
-  },
+  updateNote,
+  changeColor,
 }
 
 let gNotes = [
@@ -43,7 +32,7 @@ let gNotes = [
       title: 'Me playing Mi',
     },
     style: {
-      backgroundColor: '#00d',
+      backgroundColor: 'darkred',
     },
   },
   {
@@ -59,7 +48,6 @@ let gNotes = [
     },
     style: {
       backgroundColor: 'red',
-      color: 'white',
     },
   },
   {
@@ -72,7 +60,6 @@ let gNotes = [
     },
     style: {
       backgroundColor: 'darkorange',
-      color: 'white',
     },
   },
   {
@@ -88,7 +75,6 @@ let gNotes = [
     },
     style: {
       backgroundColor: 'purple',
-      color: 'white',
     },
   },
 ]
@@ -100,6 +86,14 @@ function query() {
 function addNote(note) {
   let newNote = { ...note, id: makeId(), isPinned: false }
   gNotes.push(newNote)
+}
+
+function updateNote(id, newNote) {
+  gNotes.forEach((note) => {
+    if (note.id === id) {
+      note = newNote
+    }
+  })
 }
 
 function removeNote(id) {
@@ -118,6 +112,8 @@ function getNoteById(id) {
   return gNotes.find((note) => note.id === id)
 }
 
-function editNote(note) {
-  console.log('in edit note')
+function changeColor(id, color) {
+  gNotes.forEach((note) => {
+    if (note.id === id) note.style.backgroundColor = color
+  })
 }

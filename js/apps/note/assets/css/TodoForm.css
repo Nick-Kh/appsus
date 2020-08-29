@@ -1,0 +1,19 @@
+.curr-todo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.curr-todo i {
+  align-self: center;
+  color: darkcyan;
+  margin: 0 5px;
+}
+
+.todo-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-left: 1.5rem;
+}

@@ -1,8 +1,6 @@
 import { AddNote } from './cmps/AddNote.jsx'
 import { noteService } from './services/note-service.js'
 import { NoteList } from './cmps/NoteList.jsx'
-import { Modal } from '../../../cmps/Modal.jsx'
-import { eventBus } from '../../../services/event-bus-service.js'
 
 export class Note extends React.Component {
   state = {
@@ -11,8 +9,11 @@ export class Note extends React.Component {
       isOnHover: false,
       noteId: null,
     },
-    isEditing: false,
-    editNote: null,
+    editNote: {
+      isEditing: false,
+      id: null,
+    },
+    currNote: null,
   }
 
   componentDidMount() {
@@ -25,8 +26,13 @@ export class Note extends React.Component {
     })
   }
 
-  onAddNote = (note) => {
-    noteService.addNote(note)
+  onAddNote = (note, isEdited = false) => {
+    if (isEdited && note.id) noteService.updateNote(note.id, note)
+    else if (!note.id && !isEdited) noteService.addNote(note)
+    let editNote = { ...this.state.editNote }
+    editNote.isEditing = null
+    editNote.id = null
+    this.setState({ editNote })
     this.loadNotes()
   }
 
@@ -55,10 +61,15 @@ export class Note extends React.Component {
   }
 
   onEditNote = (noteId) => {
-    noteService.editNote(noteId)
-    eventBus.emit('openModal')
-    this.setState({ editNote: noteService.getNoteById(noteId) })
-    this.setState({ isEditing: true })
+    const editNote = { ...this.state.editNote }
+    editNote.isEditing = true
+    editNote.id = noteId
+    this.setState({ editNote })
+  }
+
+  onColorPick = (noteId, color) => {
+    noteService.changeColor(noteId, color)
+    this.loadNotes()
   }
 
   getPinnedNotes = () => {
@@ -80,7 +91,6 @@ export class Note extends React.Component {
   render() {
     const pinnedNotes = this.getPinnedNotes()
     const otherNotes = this.getOtherNotes()
-
     return (
       <section className='note-app'>
         <AddNote onAddNote={this.onAddNote} />
@@ -95,6 +105,9 @@ export class Note extends React.Component {
               onHover={this.state.onHover}
               onNotePin={this.onNotePin}
               onEditNote={this.onEditNote}
+              editNote={this.state.editNote}
+              onAddNote={this.onAddNote}
+              onColorPick={this.onColorPick}
             />
           </React.Fragment>
         )}
@@ -109,6 +122,9 @@ export class Note extends React.Component {
               onHover={this.state.onHover}
               onNotePin={this.onNotePin}
               onEditNote={this.onEditNote}
+              editNote={this.state.editNote}
+              onAddNote={this.onAddNote}
+              onColorPick={this.onColorPick}
             />
           </React.Fragment>
         )}

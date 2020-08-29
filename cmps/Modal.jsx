@@ -1,9 +1,8 @@
 import { eventBus } from '../services/event-bus-service.js'
 
 export class Modal extends React.Component {
-
   state = {
-    isShown: false
+    isShown: false,
   }
 
   componentDidMount() {
@@ -20,17 +19,20 @@ export class Modal extends React.Component {
   }
 
   render() {
-
     const { isShown } = this.state
     const { children } = this.props
 
     return (
-      <div className={`modal-wrapper ${isShown ? '' : 'hide'}`} onClick={this.closeModal} >
-        <div className="modal-content" onClick={(ev) => ev.stopPropagation()}>
-          <span className="close-modal-btn" onClick={this.closeModal}>&times;</span>
+      <div
+        className={`modal-wrapper ${isShown ? '' : 'hide'}`}
+        onClick={this.closeModal}>
+        <div className='modal-content' onClick={(ev) => ev.stopPropagation()}>
+          <span className='close-modal-btn' onClick={this.closeModal}>
+            &times;
+          </span>
           {children}
         </div>
-      </div >
+      </div>
     )
   }
 }

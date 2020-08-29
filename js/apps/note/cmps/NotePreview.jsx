@@ -11,6 +11,9 @@ export const NotePreview = ({
   onHover,
   onNotePin,
   onEditNote,
+  editNote,
+  onAddNote,
+  onColorPick,
 }) => {
   switch (note.type) {
     case 'NoteImg':
@@ -23,6 +26,9 @@ export const NotePreview = ({
           onNoteUnhover={onNoteUnhover}
           onNotePin={onNotePin}
           onEditNote={onEditNote}
+          editNote={editNote}
+          onAddNote={onAddNote}
+          onColorPick={onColorPick}
         />
       )
     case 'NoteTodos':
@@ -35,6 +41,9 @@ export const NotePreview = ({
           onHover={onHover}
           onNotePin={onNotePin}
           onEditNote={onEditNote}
+          editNote={editNote}
+          onAddNote={onAddNote}
+          onColorPick={onColorPick}
         />
       )
     case 'NoteVid':
@@ -47,6 +56,9 @@ export const NotePreview = ({
           onHover={onHover}
           onNotePin={onNotePin}
           onEditNote={onEditNote}
+          editNote={editNote}
+          onAddNote={onAddNote}
+          onColorPick={onColorPick}
         />
       )
     case 'NoteText':
@@ -60,6 +72,9 @@ export const NotePreview = ({
           onHover={onHover}
           onNotePin={onNotePin}
           onEditNote={onEditNote}
+          editNote={editNote}
+          onAddNote={onAddNote}
+          onColorPick={onColorPick}
         />
       )
   }

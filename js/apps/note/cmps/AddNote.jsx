@@ -1,5 +1,6 @@
 import { TextForm } from './NoteForms/TextForm.jsx'
 import { ImgForm } from './NoteForms/ImgForm.jsx'
+import { TodoForm } from './NoteForms/TodoForm.jsx'
 
 export class AddNote extends React.Component {
   state = {
@@ -7,11 +8,30 @@ export class AddNote extends React.Component {
     note: {
       type: 'NoteText',
       info: {},
+      style: {
+        backgroundColor: 'lightblue',
+      },
     },
+    todos: [],
+    currTodo: '',
   }
 
   componentDidMount() {
     this.setState({ formType: 'text' })
+  }
+
+  resetForm = () => {
+    let newState = {
+      url: null,
+      note: {
+        type: 'NoteText',
+        info: {},
+        style: {
+          backgroundColor: 'lightblue',
+        },
+      },
+    }
+    this.setState(newState)
   }
 
   inputSelect = (formType) => {
@@ -32,7 +52,6 @@ export class AddNote extends React.Component {
   }
 
   onTitleChange = (title) => {
-    console.log(title)
     let note = { ...this.state.note }
     note.info.title = title
     this.setState({ note })
@@ -42,6 +61,19 @@ export class AddNote extends React.Component {
     let note = { ...this.state.note }
     note.info.txt = txt
     this.setState({ note })
+  }
+
+  onTodoChange = (todo) => {
+    this.setState({ currTodo: todo })
+  }
+
+  onAddTodo = () => {
+    let todos = this.state.todos
+    if (this.state.currTodo !== '') {
+      todos.push(this.state.currTodo)
+      this.setState({ todos })
+      this.setState({ currTodo: '' })
+    }
   }
 
   getFormCmp = (selected) => {
@@ -62,6 +94,16 @@ export class AddNote extends React.Component {
             onTitleChange={this.onTitleChange}
           />
         )
+      case 'NoteTodos':
+        return (
+          <TodoForm
+            onTitleChange={this.onTitleChange}
+            onTodoChange={this.onTodoChange}
+            todos={this.state.todos}
+            onAddTodo={this.onAddTodo}
+            currTodo={this.state.currTodo}
+          />
+        )
     }
   }
 
@@ -73,9 +115,13 @@ export class AddNote extends React.Component {
         </div>
         <button
           className='note-btn'
-          onClick={() => this.props.onAddNote(this.state.note)}>
+          onClick={() => {
+            this.resetForm()
+            this.props.onAddNote(this.state.note)
+          }}>
           Add Note
         </button>
+
         <div className='input-select'>
           <div className='input-item' onClick={() => this.inputSelect('Text')}>
             <i className='fas fa-font fa-2x'></i>

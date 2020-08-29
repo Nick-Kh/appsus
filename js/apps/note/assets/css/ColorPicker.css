@@ -1,15 +1,51 @@
 .color-picker {
-  background: black;
+  background: linear-gradient(lightgray, darkgray);
+  opacity: 0.9;
   width: 100px;
   height: 100px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   border-radius: 5px;
   position: absolute;
+  top: 1.1rem;
+  padding: 2px;
 }
 
 .color-item {
   border-radius: 50%;
   margin: 2px;
+  border: 1px black solid;
+}
+
+.color-item:hover {
+  cursor: pointer;
   border: 1px white solid;
+}
+
+.color-item.default {
+  background-color: lightblue;
+}
+.color-item.orange {
+  background-color: orange;
+}
+.color-item.green {
+  background-color: green;
+}
+.color-item.yellow {
+  background-color: yellow;
+}
+.color-item.purple {
+  background-color: purple;
+}
+.color-item.brown {
+  background-color: brown;
+}
+.color-item.red {
+  background-color: red;
+}
+.color-item.blue {
+  background-color: blue;
+}
+.color-item.lightcoral {
+  background-color: lightcoral;
 }
