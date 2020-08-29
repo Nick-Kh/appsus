@@ -1,31 +1,33 @@
 import { emailService } from '../services/email-service.js'
 import { eventBus } from '../../../../services/event-bus-service.js'
+import { ComposeValidation } from '../cmps/ComposeValidation.jsx'
 
 export class EmailCompose extends React.Component {
 
   state = {
-    email: null
+    email: null,
+    isValid: false
   }
 
   elInput = React.createRef()
 
   componentDidMount() {
-    console.log('mounted');
     this.setState({ email: emailService.getEmptyEmail() })
     this.elInput.current.focus()
   }
 
-  componentWillUnmount() {
-    console.log('unmounted');
-  }
-  
-
   onInputChange = (ev) => {
     const value = ev.target.value
-    this.setState({ email: { ...this.state.email, [ev.target.name]: value } })
+    this.setState({ email: { ...this.state.email, [ev.target.name]: value } }, () => {
+      if (this.state.email.from !== '' && this.state.email.email !== '' && emailService.validateEmail(this.state.email.email) && this.state.email.subject !== '') this.setState({ isValid: true })
+      else if (this.state.email.from === '' || this.state.email.email === '' || !emailService.validateEmail(this.state.email.email) || this.state.email.subject === '') this.setState({ isValid: false })
+    })
   }
 
   saveEmail = () => {
+    if (this.state.email.from === '') return
+    else if (this.state.email.email === '' || !emailService.validateEmail(this.state.email.email)) return
+    else if (this.state.email.subject === '') return
     emailService.saveEmail(this.state.email)
     eventBus.emit('emailSent')
     eventBus.emit('loadEmails')
@@ -43,56 +45,10 @@ export class EmailCompose extends React.Component {
           <input type="text" id="compose-from" name="email" placeholder="Email" onChange={this.onInputChange} />
           <input type="text" id="compose-subject" name="subject" placeholder="Subject" onChange={this.onInputChange} />
           <textarea id="compose-text" name="body" onChange={this.onInputChange} />
+          <ComposeValidation isValid={this.state.isValid} />
           <button className="email-send-btn" onClick={this.saveEmail}>Send</button>
         </div>
       </section>
     )
   }
 }
-
-
-// export class PetEdit extends React.Component {
-//   state = {
-//     pet: petService.getEmpty(),
-//   }
-
-//   elInput = React.createRef()
-
-//   componentDidMount() {
-//     const { id } = this.props.match.params
-//     if (id) petService.getById(id).then(pet => this.setState({ pet }))
-
-//     this.elInput.current.focus()
-//   }
-//   onInputChange = (ev) => {
-//     console.log('Input:', ev.target.name);
-//     console.log('Changed', ev.target.value);
-//     const value = ev.target.type === 'number' ? +ev.target.value : ev.target.value
-//     this.setState({ pet: { ...this.state.pet, [ev.target.name]: value } })
-//   }
-//   addPet = (ev) => {
-//     ev.preventDefault();
-//     console.log('Adding Pet');
-//     petService.save(this.state.pet)
-//     eventBus.emit('notify', { msg: 'Pet Saved', type: 'fail' })
-//     this.props.history.push('/pet')
-//   }
-
-//   render() {
-//     return (
-//       <div className='pet-edit'>
-//         <input ref={this.elInput} name="name" value={this.state.pet.name}
-//           placeholder="Pet Name" type="text"
-//           onChange={this.onInputChange}
-//         />
-//         <input name="power" value={this.state.pet.power}
-//           placeholder="Pet Power" type="number"
-//           onChange={this.onInputChange}
-//         />
-//         <button onClick={this.addPet}>Save Pet</button>
-//       </div>
-
-
-//     )
-//   }
-// }

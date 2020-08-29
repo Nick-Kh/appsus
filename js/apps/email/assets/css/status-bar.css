@@ -9,3 +9,9 @@
   height: 10px;
   border-radius: 1rem;
 }
+
+@media(max-width: 650px) {
+  .progress-div {
+    margin: 0 auto;
+  }
+}

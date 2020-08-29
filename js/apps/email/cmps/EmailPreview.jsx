@@ -26,7 +26,6 @@ export function EmailPreview({ email, removeEmail, readToggle }) {
   return (
     <Link to={`/email/${email.id}`}>
       <div className={`email-preview ${email.isRead ? "unread" : "read"}`} onClick={() => read(email.id)}>
-        <input className="em-cont checkbox" type="checkbox" />
         <div className={`em-cont email-from ${email.isRead ? "bold" : ""}`}>{email.from}</div>
         <div className={`em-cont email-subject ${email.isRead ? "bold" : ""}`}>{email.subject}</div>
         <LongTxt text={email.body} />

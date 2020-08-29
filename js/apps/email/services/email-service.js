@@ -9,7 +9,8 @@ export const emailService = {
   getEmail,
   emailStatus,
   getEmptyEmail,
-  saveEmail
+  saveEmail,
+  validateEmail
 }
 
 const emails = [
@@ -110,7 +111,7 @@ function query() {
   if (!allEmails || !allEmails.length) {
     storageService.saveToStorage('emails', emails)
     allEmails = storageService.loadFromStorage('emails')
-  } 
+  }
   return Promise.resolve(allEmails)
 }
 
@@ -122,12 +123,20 @@ function getEmptyEmail() {
     subject: '',
     body: '',
     isRead: true,
+    isSent: true,
     receivedAt: formatDate(Date.now())
   }
 }
 
 function saveEmail(email) {
   let emails = storageService.loadFromStorage('emails')
+  email.from = email.from.toLowerCase()
+    .split(' ')
+    .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
+    .join(' ')
+  email.subject = email.subject.charAt(0).toUpperCase() + email.subject.slice(1)
+  email.body = email.body.charAt(0).toUpperCase() + email.body.slice(1)
+  if (email.body === '') email.body = '<blank>'
   emails.unshift(email)
   storageService.saveToStorage('emails', emails)
 }
@@ -195,4 +204,9 @@ function formatDate(time) {
     hour12: false,
   };
   return new Intl.DateTimeFormat('en', options).format(time);
+}
+
+function validateEmail(email) {
+  const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(String(email).toLowerCase());
 }
