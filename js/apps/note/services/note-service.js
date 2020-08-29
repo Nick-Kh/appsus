@@ -1,4 +1,5 @@
 import { makeId } from './utils-service.js'
+import { storageService } from '../../../../services/storage-service.js'
 
 export const noteService = {
   query,
@@ -42,7 +43,10 @@ let gNotes = [
 
     info: {
       label: 'How was it:',
-      todos: ['do that', 'do this'],
+      todos: [
+        { txt: 'do that', createdAt: '', isChecked: false },
+        { txt: 'do this', createdAt: '', isChecked: false },
+      ],
     },
     style: {
       backgroundColor: 'red',

@@ -1,4 +1,4 @@
-import { NoteForm } from '../NoteForm.jsx'
+import { NoteForm } from './NoteForm.jsx'
 
 export class EditForm extends React.Component {
   state = {
@@ -8,7 +8,12 @@ export class EditForm extends React.Component {
 
   componentDidMount() {
     this.setState({ currNote: { ...this.props.note } })
-    this.setState({ todos: [...this.props.note.info.todos] })
+    let todos = [...this.props.note.info.todos]
+    let newTodos = []
+    todos.forEach((todo, idx) => {
+      newTodos[idx] = todo.txt
+    })
+    this.setState({ todos: newTodos })
   }
 
   onTitleChange = (title) => {
@@ -38,7 +43,9 @@ export class EditForm extends React.Component {
   updateTodos = () => {
     let note = { ...this.state.currNote }
     let todos = this.state.todos
-    note.info.todos = todos
+    todos.forEach((todo, idx) => {
+      note.info.todos[idx].txt = todo
+    })
     this.setState({ currNote: note })
   }
 

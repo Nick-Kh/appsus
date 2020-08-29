@@ -1,6 +1,7 @@
 import { TextForm } from './NoteForms/TextForm.jsx'
 import { ImgForm } from './NoteForms/ImgForm.jsx'
 import { TodoForm } from './NoteForms/TodoForm.jsx'
+import { VidForm } from './NoteForms/VidForm.jsx'
 
 export class AddNote extends React.Component {
   state = {
@@ -19,6 +20,7 @@ export class AddNote extends React.Component {
     },
     todos: [],
     currTodo: '',
+    isVidLoaded: false,
   }
 
   componentDidMount() {
@@ -42,6 +44,7 @@ export class AddNote extends React.Component {
       },
       todos: [],
       currTodo: '',
+      isVidLoaded: false,
     }
     this.setState(newState)
   }
@@ -53,6 +56,11 @@ export class AddNote extends React.Component {
   }
 
   onInputURL = (url) => {
+    if (this.state.note.type === 'NoteVid') {
+      let note = { ...this.state.note }
+      note.info.url = url
+      this.setState({ note })
+    }
     this.setState({ url })
   }
 
@@ -83,11 +91,21 @@ export class AddNote extends React.Component {
     let todos = this.state.todos
     if (this.state.currTodo !== '') {
       let note = { ...this.state.note }
-      todos.push(this.state.currTodo)
+      todos.push({
+        txt: this.state.currTodo,
+        completedAt: '',
+        isChecked: false,
+      })
       note.info.todos = todos
       this.setState({ note })
       this.setState({ currTodo: '' })
+      console.log(note.info.todos)
     }
+  }
+
+  onVidLoad = () => {
+    console.log('loading vid')
+    this.setState({ isVidLoaded: true })
   }
 
   getFormCmp = (selected) => {
@@ -122,6 +140,18 @@ export class AddNote extends React.Component {
             currTodo={this.state.currTodo}
           />
         )
+      case 'NoteVid':
+        return (
+          <VidForm
+            onTitleChange={this.onTitleChange}
+            currTitle={this.state.note.info.title}
+            vidURL={this.state.note.info.url}
+            onInputURL={this.onInputURL}
+            currUrl={this.state.url}
+            isVidLoaded={this.state.isVidLoaded}
+            onVidLoad={this.onVidLoad}
+          />
+        )
     }
   }
 
@@ -144,7 +174,8 @@ export class AddNote extends React.Component {
               (this.state.note.type === 'NoteTodos' &&
                 this.state.note.info.todos.length === 0) ||
               (this.state.note.type === 'NoteText' &&
-                this.state.note.info.txt === '')
+                this.state.note.info.txt === '') ||
+              (this.state.note.type === 'NoteVid' && this.state.url === '')
             }>
             Add Note
           </button>

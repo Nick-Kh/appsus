@@ -5,9 +5,10 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 70%;
-  border: 2px lightblue solid;
-  background: lightgray;
+  width: 60%;
+  padding: 10px 0;
+  border: 1.2px darkslateblue solid;
+  background: linear-gradient(lightgray, #f3f3f3);
   border-radius: 10px;
   box-shadow: 7px 10px 7px -8px rgba(0, 0, 0, 0.75);
 }
@@ -22,16 +23,14 @@
   text-decoration-style: wavy;
   transition: 0.3s;
   outline: none;
-}
-
-.note-btn {
   margin: 0 10px;
 }
 
-.note-btn:hover {
+.note-btn:hover:enabled {
   cursor: pointer;
   background: #e3e3e3;
   box-shadow: 3px 7px 6px -7px rgba(0, 0, 0, 0.75);
+  color: darkcyan;
 }
 
 .input-select {
@@ -80,4 +79,9 @@
 
 .add-note i:hover {
   cursor: pointer;
+}
+
+.vid-frame {
+  width: 100%;
+  height: auto;
 }

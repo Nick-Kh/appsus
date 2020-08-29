@@ -57,7 +57,7 @@ export const NoteForm = ({
             value={note.info.title ? note.info.title : ''}
           />
           {note.info.todos.map((todo, idx) => (
-            <React.Fragment key={todo}>
+            <React.Fragment key={todo.txt}>
               <label>Todo#{idx + 1}</label>
               <input
                 type='text'
@@ -67,6 +67,25 @@ export const NoteForm = ({
               />
             </React.Fragment>
           ))}
+        </React.Fragment>
+      )
+    case 'NoteVid':
+      return (
+        <React.Fragment>
+          <label>Title</label>
+          <input
+            type='text'
+            placeholder='Edit title...'
+            onChange={(ev) => onTitleChange(ev.target.value)}
+            value={note.info.title ? note.info.title : ''}
+          />
+          <label>Url</label>
+          <input
+            type='text'
+            placeholder='Edit video url...'
+            onChange={(ev) => onUrlChange(ev.target.value)}
+            value={note.info.url}
+          />
         </React.Fragment>
       )
   }

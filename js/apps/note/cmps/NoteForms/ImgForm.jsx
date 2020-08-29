@@ -13,7 +13,7 @@ export const ImgForm = ({
           name='url'
           id='url'
           placeholder='Enter image URL'
-          pattern='http://.*'
+          pattern='http.*'
           size='30'
           required
           value={currUrl}

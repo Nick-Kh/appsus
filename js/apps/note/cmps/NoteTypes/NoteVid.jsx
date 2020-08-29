@@ -33,7 +33,11 @@ export const NoteVid = ({
               onColorPick={onColorPick}
             />
           )}
-          <h1>Video Note</h1>
+          <h2>{note.info.title ? note.info.title : ''}</h2>
+          <iframe
+            className='vid-frame'
+            placeholder='your vid'
+            src={note.info.url}></iframe>
         </React.Fragment>
       )}
     </div>

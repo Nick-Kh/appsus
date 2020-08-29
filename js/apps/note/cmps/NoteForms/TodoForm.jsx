@@ -16,12 +16,12 @@ export const TodoForm = ({
       />
       <div className='curr-todo'>
         {todos.map((todo) => (
-          <div key={todo}>
+          <div key={todo.txt}>
             <input
               type='text'
               placeholder='Enter to do...'
               onChange={(ev) => onTodoChange(ev.target.value)}
-              value={todo}
+              value={todo.txt}
               disabled
               required
             />
