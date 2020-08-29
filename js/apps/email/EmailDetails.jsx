@@ -1,4 +1,5 @@
 import { emailService } from './services/email-service.js'
+import { eventBus } from '../../../services/event-bus-service.js'
 
 export class EmailDetails extends React.Component {
 
@@ -22,11 +23,13 @@ export class EmailDetails extends React.Component {
 
   unReadEmail = () => {
     emailService.unReadEmail(this.props.match.params.emailId)
+    eventBus.emit('loadEmails')
     this.goBack()
   }
 
   removeEmail = () => {
     emailService.removeEmail(this.props.match.params.emailId)
+    eventBus.emit('loadEmails')
     this.goBack()
   }
 

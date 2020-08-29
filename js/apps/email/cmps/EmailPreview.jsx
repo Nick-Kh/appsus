@@ -2,6 +2,7 @@ const { Link } = ReactRouterDOM;
 
 import { emailService } from '../services/email-service.js'
 import { LongTxt } from '../cmps/LongText.jsx'
+import { eventBus } from '../../../../services/event-bus-service.js'
 
 export function EmailPreview({ email, removeEmail, readToggle }) {
 
@@ -17,10 +18,14 @@ export function EmailPreview({ email, removeEmail, readToggle }) {
     readToggle(emailId)
   }
 
+  function read(emailId) {
+    emailService.readEmail(emailId)
+    eventBus.emit('loadEmails')
+  }
+
   return (
     <Link to={`/email/${email.id}`}>
-      <div className={`email-preview ${email.isRead ? "unread" : "read"}`} onClick={(ev) => emailService.readEmail(email.id)}>
-        <input className="em-cont checkbox" type="checkbox" />
+      <div className={`email-preview ${email.isRead ? "unread" : "read"}`} onClick={() => read(email.id)}>
         <div className={`em-cont email-from ${email.isRead ? "bold" : ""}`}>{email.from}</div>
         <div className={`em-cont email-subject ${email.isRead ? "bold" : ""}`}>{email.subject}</div>
         <LongTxt text={email.body} />

@@ -6,8 +6,6 @@ import { Home } from './pages/Home.jsx'
 import { Book } from './js/apps/book/Book.jsx'
 import { Note } from './js/apps/note/Note.jsx'
 import { EmailApp } from './js/apps/email/EmailApp.jsx'
-import { Modal } from './cmps/Modal.jsx'
-import { EmailCompose } from './js/apps/email/cmps/EmailCompose.jsx'
 
 export class App extends React.Component {
   render() {
@@ -22,9 +20,6 @@ export class App extends React.Component {
             <Route component={Home} path='/' exact />
           </Switch>
         </main>
-        <Modal>
-          <EmailCompose />
-        </Modal>
       </Router>
     )
   }
