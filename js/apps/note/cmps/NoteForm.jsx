@@ -1,17 +1,73 @@
-import { TextForm } from './NoteForms/TextForm.jsx'
-import { ImgForm } from './NoteForms/ImgForm.jsx'
-import { TodoForm } from './NoteForms/TodoForm.jsx'
-import { VidForm } from './NoteForms/VidForm.jsx'
-
-export const NoteForm = ({ note }) => {
+export const NoteForm = ({
+  note,
+  onTitleChange,
+  onUrlChange,
+  onTextChange,
+  onTodoChange,
+  todos,
+}) => {
   switch (note.type) {
     case 'NoteText':
-      return <TextForm note={note} />
+      return (
+        <React.Fragment>
+          <label>Title</label>
+          <input
+            type='text'
+            placeholder='Edit title...'
+            onChange={(ev) => onTitleChange(ev.target.value)}
+            value={note.info.title ? note.info.title : ''}
+          />
+          <label>Text</label>
+          <input
+            type='text'
+            placeholder='Edit note...'
+            onChange={(ev) => onTextChange(ev.target.value)}
+            value={note.info.txt ? note.info.txt : ''}
+            required
+          />
+        </React.Fragment>
+      )
     case 'NoteImg':
-      return <ImgForm note={note} />
+      return (
+        <React.Fragment>
+          <label>Url</label>
+          <input
+            type='text'
+            placeholder='Edit image url...'
+            onChange={(ev) => onUrlChange(ev.target.value)}
+            value={note.info.url}
+          />
+          <label>Title</label>
+          <input
+            type='text'
+            placeholder='Edit title...'
+            onChange={(ev) => onTitleChange(ev.target.value)}
+            value={note.info.title ? note.info.title : ''}
+          />
+        </React.Fragment>
+      )
     case 'NoteTodos':
-      return <TodoForm note={note} />
-    case 'NoteVid':
-      return <VidForm note={note} />
+      return (
+        <React.Fragment>
+          <label>Title</label>
+          <input
+            type='text'
+            placeholder='Edit title'
+            onChange={(ev) => onTitleChange(ev.target.value)}
+            value={note.info.title ? note.info.title : ''}
+          />
+          {note.info.todos.map((todo, idx) => (
+            <React.Fragment key={todo}>
+              <label>Todo#{idx + 1}</label>
+              <input
+                type='text'
+                placeholder='Edit todo...'
+                onChange={(ev) => onTodoChange(ev.target.value, idx)}
+                value={todos[idx]}
+              />
+            </React.Fragment>
+          ))}
+        </React.Fragment>
+      )
   }
 }

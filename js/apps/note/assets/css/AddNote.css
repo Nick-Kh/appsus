@@ -21,6 +21,11 @@
   background: #f3f3f3;
   text-decoration-style: wavy;
   transition: 0.3s;
+  outline: none;
+}
+
+.note-btn {
+  margin: 0 10px;
 }
 
 .note-btn:hover {
@@ -42,7 +47,6 @@
 
 .input-select i {
   margin: 0 10px;
-  /* transition: 0.3s; */
 }
 
 .input-item {
@@ -54,8 +58,10 @@
   transition: 0.3s;
 }
 
+.selected,
 .input-item:hover {
-  color: red;
+  cursor: pointer;
+  color: darkcyan;
   box-shadow: 3px 7px 6px -7px rgba(0, 0, 0, 0.75);
 }
 
@@ -71,22 +77,6 @@
 .add-note input:focus {
   border: 1.5px solid darkcyan;
 }
-
-/* .input-form i:active {
-  padding: 5px;
-  border: 1px solid black;
-  border-radius: 50%;
-} */
-
-/* .add-note input {
-  height: 40px;
-  padding-right: 30%;
-  padding-left: 2%;
-  width: 70%;
-  word-break: break-all;
-  border: none;
-  background: lightgray;
-} */
 
 .add-note i:hover {
   cursor: pointer;

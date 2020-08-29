@@ -2,7 +2,6 @@ import { eventBus } from '../services/event-bus-service.js'
 import { EmailCompose } from '../js/apps/email/cmps/EmailCompose.jsx'
 
 export class Modal extends React.Component {
-
   state = {
     isShown: true
   }
@@ -19,7 +18,6 @@ export class Modal extends React.Component {
   }
 
   render() {
-
     const { isShown } = this.state
 
     return (
@@ -28,7 +26,7 @@ export class Modal extends React.Component {
           <span className="close-modal-btn" onClick={this.closeModal}>&times;</span>
           <EmailCompose />
         </div>
-      </div >
+      </div>
     )
   }
 }
