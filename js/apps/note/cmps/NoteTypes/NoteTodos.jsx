@@ -1,5 +1,6 @@
 import { EditPanel } from '../EditPanel.jsx'
 import { EditForm } from '../NoteForms/EditForm.jsx'
+import { TodoList } from '../Todo/TodoList.jsx'
 
 export const NoteTodos = ({
   note,
@@ -33,8 +34,8 @@ export const NoteTodos = ({
               onColorPick={onColorPick}
             />
           )}
-
-          <h1>Todos Note</h1>
+          <h2>{note.info.title}</h2>
+          <TodoList todos={note.info.todos} />
         </React.Fragment>
       )}
     </div>

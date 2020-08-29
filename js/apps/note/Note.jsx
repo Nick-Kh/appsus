@@ -27,8 +27,10 @@ export class Note extends React.Component {
   }
 
   onAddNote = (note, isEdited = false) => {
-    if (isEdited && note.id) noteService.updateNote(note.id, note)
-    else if (!note.id && !isEdited) noteService.addNote(note)
+    if (note) {
+      if (isEdited && note.id) noteService.updateNote(note.id, note)
+      else if (!note.id && !isEdited) noteService.addNote(note)
+    }
     let editNote = { ...this.state.editNote }
     editNote.isEditing = null
     editNote.id = null

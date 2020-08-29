@@ -3,6 +3,8 @@ export const NoteForm = ({
   onTitleChange,
   onUrlChange,
   onTextChange,
+  onTodoChange,
+  todos,
 }) => {
   switch (note.type) {
     case 'NoteText':
@@ -42,6 +44,29 @@ export const NoteForm = ({
             onChange={(ev) => onTitleChange(ev.target.value)}
             value={note.info.title ? note.info.title : ''}
           />
+        </React.Fragment>
+      )
+    case 'NoteTodos':
+      return (
+        <React.Fragment>
+          <label>Title</label>
+          <input
+            type='text'
+            placeholder='Edit title'
+            onChange={(ev) => onTitleChange(ev.target.value)}
+            value={note.info.title ? note.info.title : ''}
+          />
+          {note.info.todos.map((todo, idx) => (
+            <React.Fragment key={todo}>
+              <label>Todo#{idx + 1}</label>
+              <input
+                type='text'
+                placeholder='Edit todo...'
+                onChange={(ev) => onTodoChange(ev.target.value, idx)}
+                value={todos[idx]}
+              />
+            </React.Fragment>
+          ))}
         </React.Fragment>
       )
   }

@@ -4,6 +4,7 @@ export const TodoForm = ({
   onAddTodo,
   todos,
   currTodo,
+  currTitle,
 }) => {
   return (
     <div className='text-form'>
@@ -11,6 +12,7 @@ export const TodoForm = ({
         type='text'
         placeholder='Todos title'
         onChange={(ev) => onTitleChange(ev.target.value)}
+        value={currTitle}
       />
       <div className='curr-todo'>
         {todos.map((todo) => (

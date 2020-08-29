@@ -1,0 +1,23 @@
+.todo-list {
+  width: 100%;
+  display: flex;
+  margin-top: 10px;
+  flex-direction: column;
+  background: white;
+  color: black;
+  justify-content: start;
+  align-items: flex-start;
+}
+
+.todo-list-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  border-bottom: 1px black solid;
+}
+
+.todo-list-item:hover {
+  cursor: pointer;
+  color: darkred;
+}

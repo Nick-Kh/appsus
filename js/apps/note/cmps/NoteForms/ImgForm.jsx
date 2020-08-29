@@ -3,6 +3,7 @@ export const ImgForm = ({
   onImageUpload,
   imgURL,
   onTitleChange,
+  currUrl,
 }) => {
   return (
     <div className='img-form'>
@@ -15,6 +16,7 @@ export const ImgForm = ({
           pattern='http://.*'
           size='30'
           required
+          value={currUrl}
           onChange={(ev) => onInputURL(ev.target.value)}
         />
         <button className='note-btn' type='submit'>

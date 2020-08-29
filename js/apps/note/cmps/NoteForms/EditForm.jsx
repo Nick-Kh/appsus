@@ -3,10 +3,12 @@ import { NoteForm } from '../NoteForm.jsx'
 export class EditForm extends React.Component {
   state = {
     currNote: null,
+    todos: [],
   }
 
   componentDidMount() {
-    this.setState({ currNote: this.props.note })
+    this.setState({ currNote: { ...this.props.note } })
+    this.setState({ todos: [...this.props.note.info.todos] })
   }
 
   onTitleChange = (title) => {
@@ -27,6 +29,19 @@ export class EditForm extends React.Component {
     this.setState({ currNote: note })
   }
 
+  onTodoChange = (todo, idx) => {
+    let todos = this.state.todos
+    todos[idx] = todo
+    this.setState({ todos })
+  }
+
+  updateTodos = () => {
+    let note = { ...this.state.currNote }
+    let todos = this.state.todos
+    note.info.todos = todos
+    this.setState({ currNote: note })
+  }
+
   render() {
     return (
       <div className='edit-form'>
@@ -37,18 +52,23 @@ export class EditForm extends React.Component {
               onTitleChange={this.onTitleChange}
               onUrlChange={this.onUrlChange}
               onTextChange={this.onTextChange}
+              onTodoChange={this.onTodoChange}
+              todos={this.state.todos}
             />
             <div className='edit-buttons'>
               <button
                 className='note-btn'
-                onClick={() => this.props.onAddNote(this.state.currNote, true)}>
+                onClick={() => {
+                  this.updateTodos()
+                  this.props.onAddNote(this.state.currNote, true)
+                }}>
                 Save
               </button>
               <button
                 className='note-btn'
-                onClick={() =>
-                  this.props.onAddNote(this.state.currNote, false)
-                }>
+                onClick={() => {
+                  this.props.onAddNote(null, false)
+                }}>
                 Cancel
               </button>
             </div>

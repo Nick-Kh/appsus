@@ -39,12 +39,10 @@ let gNotes = [
     id: makeId(),
     type: 'NoteTodos',
     isPinned: false,
+
     info: {
       label: 'How was it:',
-      todos: [
-        { txt: 'Do that', doneAt: null },
-        { txt: 'Do this', doneAt: 187111111 },
-      ],
+      todos: ['do that', 'do this'],
     },
     style: {
       backgroundColor: 'red',
