@@ -7,10 +7,18 @@ export class EmailCompose extends React.Component {
     email: null
   }
 
+  elInput = React.createRef()
+
   componentDidMount() {
     console.log('mounted');
     this.setState({ email: emailService.getEmptyEmail() })
+    this.elInput.current.focus()
   }
+
+  componentWillUnmount() {
+    console.log('unmounted');
+  }
+  
 
   onInputChange = (ev) => {
     const value = ev.target.value
@@ -19,7 +27,7 @@ export class EmailCompose extends React.Component {
 
   saveEmail = () => {
     emailService.saveEmail(this.state.email)
-    eventBus.emit('closeModal')
+    eventBus.emit('emailSent')
     eventBus.emit('loadEmails')
   }
 
@@ -31,7 +39,7 @@ export class EmailCompose extends React.Component {
           <p>New Message</p>
         </div>
         <div className="compose-body">
-          <input type="text" id="compose-from" name="from" placeholder="Name" onChange={this.onInputChange} />
+          <input ref={this.elInput} type="text" id="compose-from" name="from" placeholder="Name" onChange={this.onInputChange} />
           <input type="text" id="compose-from" name="email" placeholder="Email" onChange={this.onInputChange} />
           <input type="text" id="compose-subject" name="subject" placeholder="Subject" onChange={this.onInputChange} />
           <textarea id="compose-text" name="body" onChange={this.onInputChange} />

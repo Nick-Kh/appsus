@@ -12,7 +12,8 @@ export const emailService = {
   saveEmail
 }
 
-const emails = [{
+const emails = [
+  {
     id: 'mXVv4',
     from: 'Penelope	Craig',
     email: 'pen.craig@yalla.com',
@@ -89,7 +90,7 @@ const emails = [{
     from: 'Samantha	Alexander',
     email: 'sam_alex@hello.com',
     subject: 'Give me back my computer',
-    body: 'Is he staying arrival address earnest. To preference considered it themselves inquietude collecting estimating. View park for why gay knew face. Next than near to four so hand. Times so do he downs me would. Witty abode party her found quiet law. They door four bed fail now have.',
+    body: 'Is he staying arrival address earnest. To preference considered it themselves inquietude collecting estimating. View park for why knew face. Next than near to four so hand. Times so do he downs me would. Witty abode party her found quiet law. They door four bed fail now have.',
     isRead: false,
     receivedAt: formatDate(1598343578350)
   },
@@ -98,7 +99,7 @@ const emails = [{
     from: 'Aida	Barnes',
     email: 'bernie@world.com',
     subject: 'Remember me ?',
-    body: 'Name were we at hope. Remainder household direction zealously the unwilling bed sex. Lose and gay ham sake met that. Stood her place one ten spoke yet. Head case knew ever set why over. Marianne returned of peculiar replying in moderate. Roused get enable garret estate old county. Entreaties you devonshire law dissimilar terminated.',
+    body: 'Name were we at hope. Remainder household direction zealously the unwilling bed sex. Lose and ham sake met that. Stood her place one ten spoke yet. Head case knew ever set why over. Marianne returned of peculiar replying in moderate. Roused get enable garret estate old county. Entreaties you devonshire law dissimilar terminated.',
     isRead: true,
     receivedAt: formatDate(1498343578350)
   }
@@ -106,7 +107,10 @@ const emails = [{
 
 function query() {
   let allEmails = storageService.loadFromStorage('emails')
-  if (!allEmails || !allEmails.length) allEmails = emails
+  if (!allEmails || !allEmails.length) {
+    storageService.saveToStorage('emails', emails)
+    allEmails = storageService.loadFromStorage('emails')
+  } 
   return Promise.resolve(allEmails)
 }
 
@@ -123,41 +127,52 @@ function getEmptyEmail() {
 }
 
 function saveEmail(email) {
+  let emails = storageService.loadFromStorage('emails')
   emails.unshift(email)
   storageService.saveToStorage('emails', emails)
-  console.log(emails);
 }
 
 function getEmailIdx(emailId) {
+  let emails = storageService.loadFromStorage('emails')
   return emails.findIndex(email => email.id === emailId)
 }
 
 function getEmail(emailId) {
+  let emails = storageService.loadFromStorage('emails')
   return emails[getEmailIdx(emailId)]
 }
 
 function readToggle(emailId) {
+  let emails = storageService.loadFromStorage('emails')
   emails[getEmailIdx(emailId)].isRead = !emails[getEmailIdx(emailId)].isRead
+  storageService.saveToStorage('emails', emails)
 }
 
 function readEmail(emailId) {
+  let emails = storageService.loadFromStorage('emails')
   emails[getEmailIdx(emailId)].isRead = false;
+  storageService.saveToStorage('emails', emails)
 }
 
 function unReadEmail(emailId) {
+  let emails = storageService.loadFromStorage('emails')
   emails[getEmailIdx(emailId)].isRead = true;
+  storageService.saveToStorage('emails', emails)
 }
 
 function removeEmail(emailId) {
+  let emails = storageService.loadFromStorage('emails')
   emails.splice(getEmailIdx(emailId), 1)
   storageService.saveToStorage('emails', emails)
 }
 
 function emailStatus() {
   let readNum = 0;
+  let emails = storageService.loadFromStorage('emails')
   emails.forEach(email => {
     if (email.isRead === false) readNum++
   })
+  storageService.saveToStorage('emails', emails)
   return readNum / emails.length;
 }
 
