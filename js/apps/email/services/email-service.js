@@ -178,6 +178,7 @@ function removeEmail(emailId) {
 function emailStatus() {
   let readNum = 0;
   let emails = storageService.loadFromStorage('emails')
+  if (emails === null) return
   emails.forEach(email => {
     if (email.isRead === false) readNum++
   })
