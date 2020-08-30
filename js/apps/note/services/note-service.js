@@ -147,6 +147,12 @@ function notePin(id) {
       note.isPinned = !note.isPinned
     }
   })
+  gSavedNotes.forEach((note) => {
+    if (note.id === id) {
+      note.isPinned = !note.isPinned
+    }
+  })
+  storageService.saveToStorage('notes', gSavedNotes)
 }
 
 function getNoteById(id) {
@@ -157,4 +163,9 @@ function changeColor(id, color) {
   gNotes.forEach((note) => {
     if (note.id === id) note.style.backgroundColor = color
   })
+
+  gSavedNotes.forEach((note) => {
+    if (note.id === id) note.style.backgroundColor = color
+  })
+  storageService.saveToStorage('notes', gSavedNotes)
 }
