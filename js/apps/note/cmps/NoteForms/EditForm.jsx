@@ -8,12 +8,14 @@ export class EditForm extends React.Component {
 
   componentDidMount() {
     this.setState({ currNote: { ...this.props.note } })
-    let todos = [...this.props.note.info.todos]
-    let newTodos = []
-    todos.forEach((todo, idx) => {
-      newTodos[idx] = todo.txt
-    })
-    this.setState({ todos: newTodos })
+    if (this.props.note.info.todos) {
+      let todos = this.props.note.info.todos
+      let newTodos = []
+      todos.forEach((todo, idx) => {
+        newTodos[idx] = todo.txt
+      })
+      this.setState({ todos: newTodos })
+    }
   }
 
   onTitleChange = (title) => {

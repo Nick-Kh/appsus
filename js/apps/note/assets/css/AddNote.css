@@ -85,3 +85,16 @@
   width: 100%;
   height: auto;
 }
+
+/* -----------media quieries----------------- */
+
+@media (max-width: 800px) {
+  .add-note {
+    width: 80%;
+  }
+}
+@media (max-width: 650px) {
+  .add-note {
+    width: 90%;
+  }
+}

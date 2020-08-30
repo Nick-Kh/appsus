@@ -1,9 +1,31 @@
 .note-list {
   width: 95%;
   height: auto;
-  column-count: 4;
+  column-count: 5;
   column-fill: balance;
   column-gap: 2rem;
   margin: 1.5rem;
-  /* margin: 1rem 2rem; */
+}
+
+/*---------------------- media quieries -------------------*/
+
+@media (max-width: 1080px) {
+  .note-list {
+    column-count: 4;
+  }
+}
+@media (max-width: 850px) {
+  .note-list {
+    column-count: 3;
+  }
+}
+@media (max-width: 650px) {
+  .note-list {
+    column-count: 2;
+  }
+}
+@media (max-width: 500px) {
+  .note-list {
+    column-count: 1;
+  }
 }

@@ -28,15 +28,7 @@ export class TodoList extends React.Component {
   getCurrentTime = () => {
     let date = new Date()
     let formDate =
-      +date.getDate() +
-      '/' +
-      +(date.getMonth() + 1) +
-      '/' +
-      date.getFullYear() +
-      '  ' +
-      date.getHours() +
-      ':' +
-      date.getMinutes()
+      +date.getDate() + '/' + +(date.getMonth() + 1) + '/' + date.getFullYear()
     return formDate
   }
 

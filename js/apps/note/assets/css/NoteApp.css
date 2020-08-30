@@ -5,7 +5,7 @@
   height: 100%;
   align-items: center;
   font-family: 'Roboto', sans-serif;
-  background: white;
+  background: linear-gradient(#f3f3f3, lightblue);
 }
 
 .note-category {

@@ -17,8 +17,8 @@ let gNotes = [
     type: 'NoteText',
     isPinned: true,
     info: {
-      title: 'FULLSTACK',
-      txt: 'Fullstack Me Baby!',
+      title: 'Nice Quote',
+      txt: '"Only the wisest and stupidest of men never change."',
     },
     style: {
       backgroundColor: 'green',
@@ -27,10 +27,10 @@ let gNotes = [
   {
     id: makeId(),
     type: 'NoteImg',
-    isPinned: false,
+    isPinned: true,
     info: {
-      url: 'http://coding-academy.org/books-photos/20.jpg',
-      title: 'Me playing Mi',
+      url: 'https://media1.giphy.com/media/SKGo6OYe24EBG/giphy.gif',
+      title: 'Sponge Bob',
     },
     style: {
       backgroundColor: 'darkred',
@@ -39,13 +39,18 @@ let gNotes = [
   {
     id: makeId(),
     type: 'NoteTodos',
-    isPinned: false,
+    isPinned: true,
 
     info: {
-      label: 'How was it:',
+      title: 'Weekly todos',
       todos: [
-        { txt: 'do that', createdAt: '', isChecked: false },
-        { txt: 'do this', createdAt: '', isChecked: false },
+        { txt: 'Feed the cat', completedAt: '29/8/2020', isChecked: true },
+        { txt: 'Finish Sprint 3', completedAt: '', isChecked: false },
+        {
+          txt: 'Grab some beer',
+          completedAt: '',
+          isChecked: false,
+        },
       ],
     },
     style: {
@@ -55,10 +60,10 @@ let gNotes = [
   {
     id: makeId(),
     type: 'NoteText',
-    isPinned: true,
+    isPinned: false,
     info: {
-      title: 'How was it:',
-      txt: 'Finish the project',
+      title: 'Note to self',
+      txt: 'Save your notes',
     },
     style: {
       backgroundColor: 'darkorange',
@@ -67,27 +72,53 @@ let gNotes = [
   {
     id: makeId(),
     type: 'NoteImg',
-    isPinned: false,
+    isPinned: true,
     info: {
       url: 'http://coding-academy.org/books-photos/2.jpg',
-      todos: [
-        { txt: 'Do that', doneAt: null },
-        { txt: 'Do this', doneAt: 187111111 },
-      ],
+      title: 'Check this book',
     },
     style: {
       backgroundColor: 'purple',
     },
   },
+  {
+    id: makeId(),
+    type: 'NoteVid',
+    isPinned: false,
+    info: {
+      url: 'https://www.youtube.com/embed/jV8B24rSN5o',
+      title: 'Tutorial to watch',
+    },
+    style: {
+      backgroundColor: 'purple',
+    },
+  },
+  {
+    id: makeId(),
+    type: 'NoteImg',
+    isPinned: true,
+    info: {
+      url: 'https://starfishm.com.au/wp-content/uploads/2019/12/3i907q.jpg',
+      title: 'Meme of the day',
+    },
+    style: {
+      backgroundColor: 'orange',
+    },
+  },
 ]
 
+let gSavedNotes = []
+
 function query() {
-  return Promise.resolve(gNotes)
+  let savedNotes = storageService.loadFromStorage('notes')
+  if (savedNotes) gSavedNotes = savedNotes
+  return Promise.resolve([...gSavedNotes, ...gNotes])
 }
 
 function addNote(note) {
   let newNote = { ...note, id: makeId(), isPinned: false }
-  gNotes.push(newNote)
+  gSavedNotes.push(newNote)
+  storageService.saveToStorage('notes', gSavedNotes)
 }
 
 function updateNote(id, newNote) {
@@ -96,10 +127,18 @@ function updateNote(id, newNote) {
       note = newNote
     }
   })
+  gSavedNotes.forEach((note) => {
+    if (note.id === id) {
+      note = newNote
+    }
+  })
+  storageService.saveToStorage('notes', gSavedNotes)
 }
 
 function removeNote(id) {
+  gSavedNotes = gSavedNotes.filter((note) => note.id !== id)
   gNotes = gNotes.filter((note) => note.id !== id)
+  storageService.saveToStorage('notes', gSavedNotes)
 }
 
 function notePin(id) {

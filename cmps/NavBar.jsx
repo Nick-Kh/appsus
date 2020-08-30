@@ -1,23 +1,21 @@
 const { NavLink, withRouter } = ReactRouterDOM
 
 export const _NavBar = () => {
-
   function toggleMenu() {
     document.body.classList.toggle('menu-open')
   }
 
   return (
     <nav className='nav-bar'>
+      <div className='screen' onClick={toggleMenu}></div>
 
-      <div className="screen" onClick={toggleMenu}></div>
-
-      <div className="img">
-        <img src="img/logo.png" />
+      <div className='img'>
+        <img src='img/logo.png' />
       </div>
-      <i className="hamburger fas fa-bars" onClick={toggleMenu}></i>
-      <i className="x fas fa-times" onClick={toggleMenu}></i>
+      <i className='hamburger fas fa-bars' onClick={toggleMenu}></i>
+      <i className='x fas fa-times' onClick={toggleMenu}></i>
       <ul>
-        <NavLink to='/' onClick={toggleMenu}>
+        <NavLink exact to='/' onClick={toggleMenu}>
           <li>Home</li>
         </NavLink>
         <NavLink to='/email' onClick={toggleMenu}>
