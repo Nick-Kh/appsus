@@ -285,3 +285,9 @@ a {
     justify-content: space-between;
     padding: 10px 50px;
 }
+
+@media (max-width: 650px) {
+    .book-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
